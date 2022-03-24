@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/daytime.qss</file>
+        <file>qss/night.qss</file>
+        <file>pictures/main_page_pics/4G_signal_pic.png</file>
+        <file>pictures/main_page_pics/background_pic.png</file>
+        <file>pictures/main_page_pics/back_stage_manage_pic.png</file>
+        <file>pictures/main_page_pics/back_stage_pic.png</file>
+        <file>pictures/main_page_pics/camera_background_pic.png</file>
+        <file>pictures/main_page_pics/dip_angle_pic.png</file>
+        <file>pictures/main_page_pics/GPS_button_pic.png</file>
+        <file>pictures/main_page_pics/heigth_pic.png</file>
+        <file>pictures/main_page_pics/moment_pic.png</file>
+        <file>pictures/main_page_pics/pexels-kostiantyn-stupak-599982@2x.png</file>
+        <file>pictures/main_page_pics/pexels-kostiantyn-stupak-599982@3x.png</file>
+        <file>pictures/main_page_pics/profile_pic.png</file>
+        <file>pictures/main_page_pics/range_pic.png</file>
+        <file>pictures/main_page_pics/rotate_pic.png</file>
+        <file>pictures/main_page_pics/top_widget_background_pic.png</file>
+        <file>pictures/main_page_pics/tower_crane_pic.png</file>
+        <file>pictures/main_page_pics/vertical_mark_pic.png</file>
+        <file>pictures/main_page_pics/voice_button_pic.png</file>
+        <file>pictures/main_page_pics/weidget_pic.png</file>
+        <file>pictures/main_page_pics/wind_speed_pic.png</file>
+        <file>pictures/main_page_pics/vertical_mark_pic_2x.png</file>
+    </qresource>
+</RCC>

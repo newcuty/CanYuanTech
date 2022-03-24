@@ -1,0 +1,22 @@
+
+QWidget#centralwidget{
+    border-image:url(":/pictures/main_page_pics/background_pic.png")
+}
+
+/*
+QWidget#camera_background_widget{
+    border-image:url(":/pictures/main_page_pics/camera_background_widget.png")
+}*/
+
+/*top widget elements icon*/
+QWidget#status_icon_widget{
+    border-image:url(":/pictures/main_page_pics/vertical_mark_pic.png")
+}
+
+QWidget#top_status_widget{
+    border-image:url(":/pictures/main_page_pics/top_widget_background_pic.png")
+}
+
+QWidget#icon_widget{
+    border-image:url(":/pictures/main_page_pics/4G_signal_pic.png.png")
+}
