@@ -20,13 +20,15 @@ public:
 
 public:
     void initTopStatusWidget(const QString& name, const QString& info);
+    void setInfo(const QString& strInfo);
 private:
 
-//    QGroupBox* top_status_groupbox_;
-//    QWidget* contain_icon_widget_;
-//    QLabel* icon_label_;   //
-//    QLabel*  type_name_label_;     //
-//    QLabel*  type_detail_label_;  //
+    QGroupBox* top_status_groupbox_;
+    QWidget* contain_icon_widget_;
+    QLabel* icon_label_;   //
+    QLabel*  type_name_label_;     //
+    QLabel*  type_detail_label_;  //
+    QGridLayout* gridLayout_;
 
 //    QHBoxLayout* horizon_layout_;
 //    QVBoxLayout* vertical_layout_;
