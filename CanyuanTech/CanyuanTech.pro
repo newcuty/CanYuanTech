@@ -23,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     cysignalwidget.h \
+    global.h \
     mainwidget.h \
     topwidgetelement.h
 

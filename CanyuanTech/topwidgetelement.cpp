@@ -9,17 +9,21 @@ topWidgetElement::topWidgetElement(QWidget *parent) :
 {
 }
 
-void topWidgetElement::initTopStatusWidget(const QString& name, const QString& info)
+void topWidgetElement::init(const QString& name, const QString& info)
 {
 
     gridLayout_ = new QGridLayout();
+
+    //图标标签
     icon_label_ = new QLabel();
     QPixmap pixmap(":/pictures/main_page_pics/vertical_mark_pic_2x.png");
     icon_label_->setPixmap(pixmap);
 
+    //顶部类型标签
     type_name_label_ = new QLabel();
     type_name_label_->setText(name);
 
+    //详细信息标签
     type_detail_label_ = new QLabel();
     type_detail_label_->setText(info);
 

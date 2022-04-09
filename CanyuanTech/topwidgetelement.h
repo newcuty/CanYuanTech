@@ -3,13 +3,7 @@
 #ifndef TOPWIDGETELEMENT_H
 #define TOPWIDGETELEMENT_H
 
-#include <QObject>
-#include <QWidget>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QLine>
-#include <QGroupBox>
+#include "global.h"
 
 class topWidgetElement : public QWidget
 {
@@ -19,7 +13,7 @@ public:
 
 
 public:
-    void initTopStatusWidget(const QString& name, const QString& info);
+    void init(const QString& name, const QString& info);
     void setInfo(const QString& strInfo);
 private:
 

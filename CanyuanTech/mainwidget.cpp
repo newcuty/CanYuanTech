@@ -1,7 +1,8 @@
 #include "mainwidget.h"
+#include "global.h"
+
 #include <QTime>
 #include <chrono>
-
 
 mainWidget::mainWidget(QWidget *parent)
     : QWidget(parent)
@@ -21,19 +22,19 @@ mainWidget::mainWidget(QWidget *parent)
 
     //构建状态栏图标信息
     topwidget[0] = new topWidgetElement(this);
-    topwidget[0] ->initTopStatusWidget(QString("型号"), QString("CY-TW-2"));
+    topwidget[0] ->init(QString("型号"), QString("CY-TW-2"));
     topwidget[0] ->setGeometry(0,0,149,80);
 
     topwidget[1] = new topWidgetElement(this);
-    topwidget[1] ->initTopStatusWidget(QString("设备ID"), QString("123456789"));
+    topwidget[1] ->init(QString("设备ID"), QString("123456789"));
     topwidget[1] ->setGeometry(149, 0,149,80);
 
     topwidget[2] = new topWidgetElement(this);
-    topwidget[2] ->initTopStatusWidget(QString("ICCID"), QString("89765431"));
+    topwidget[2] ->init(QString("ICCID"), QString("89765431"));
     topwidget[2] ->setGeometry(298, 0, 149,80);
 
     topwidget[3] = new topWidgetElement(this);
-    topwidget[3] ->initTopStatusWidget(QString("日期"), QString(""));
+    topwidget[3] ->init(QString("日期"), QString(""));
     topwidget[3] ->setGeometry(447, 0, 155, 80);
 
     exit_thread_flag_ = false;
@@ -47,8 +48,9 @@ mainWidget::mainWidget(QWidget *parent)
         }
     }));
 
+    //累计运行时间控件
     topwidget[4] = new topWidgetElement(this);
-    topwidget[4] ->initTopStatusWidget(QString("累计运行时间"), QString(""));
+    topwidget[4] ->init(QString("累计运行时间"), QString(""));
     topwidget[4] ->setGeometry(596, 0, 152, 80);
 }
 
@@ -63,6 +65,11 @@ mainWidget::~mainWidget()
 
 void mainWidget::resizeEvent(QResizeEvent *event)
 {
+    if (event == nullptr)
+    {
+        return;
+    }
+
     background_widget->resize(this->size());
     top_status_widget->resize(this->width(), 130);
 }
