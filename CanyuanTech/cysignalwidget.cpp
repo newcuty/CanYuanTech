@@ -35,7 +35,7 @@ void cySignalWidget::init(const QString &icon_path, const QString &info)
     }
 
     //显示图片
-    QPixmap pixmap(":/pictures/main_page_pics/4G_signal_pic.png");
+    QPixmap pixmap(icon_path);
     icon_label_->setPixmap(pixmap);
 
     if(info_label_ == nullptr)
@@ -48,8 +48,12 @@ void cySignalWidget::init(const QString &icon_path, const QString &info)
 
     //构建垂直布局
     QVBoxLayout* vLayout = new QVBoxLayout(this);
+     //添加元素
     vLayout->addWidget(icon_label_);
     vLayout->addWidget(info_label_);
+     //设置元素在控件中的位置
+    vLayout->setAlignment(icon_label_, Qt::AlignCenter);
+    vLayout->setAlignment(info_label_, Qt::AlignLeft);
 
     this->setLayout(vLayout);
 }
@@ -59,7 +63,11 @@ void cySignalWidget::setIcon(const QString &icon_path)
     if(icon_label_ == nullptr)
     {
         //添加日志
+        qWarning() << "信号控件未初始化\n";
         return;
     }
 
+    //修改显示图片
+    QPixmap pixmap(icon_path);
+    icon_label_->setPixmap(pixmap);
 }

@@ -11,7 +11,7 @@
         <file>pictures/main_page_pics/GPS_button_pic.png</file>
         <file>pictures/main_page_pics/heigth_pic.png</file>
         <file>pictures/main_page_pics/moment_pic.png</file>
-        <file>pictures/main_page_pics/pexels-kostiantyn-stupak-599982@2x.png</file>
+        <file>pictures/main_page_pics/camera_init.png</file>
         <file>pictures/main_page_pics/pexels-kostiantyn-stupak-599982@3x.png</file>
         <file>pictures/main_page_pics/profile_pic.png</file>
         <file>pictures/main_page_pics/range_pic.png</file>
@@ -23,5 +23,6 @@
         <file>pictures/main_page_pics/weidget_pic.png</file>
         <file>pictures/main_page_pics/wind_speed_pic.png</file>
         <file>pictures/main_page_pics/vertical_mark_pic_2x.png</file>
+        <file>pictures/main_page_pics/bottom_widget_background_pic.png</file>
     </qresource>
 </RCC>

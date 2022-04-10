@@ -2,8 +2,8 @@
 //提供一个接口
 #ifndef CYSIGNALWIDGET_H
 #define CYSIGNALWIDGET_H
-
 #include "global.h"
+
 
 class cySignalWidget : public QWidget
 {

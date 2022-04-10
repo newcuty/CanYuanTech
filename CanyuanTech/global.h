@@ -12,6 +12,8 @@
 #include <QMutex>
 #include <QDateTime>
 #include <QTextStream>
+#include <QPushButton>
+#include <QPainter>
 
 
 #include <QLine>
