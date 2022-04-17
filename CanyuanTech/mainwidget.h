@@ -4,10 +4,14 @@
 #include <QWidget>
 #include <QPushButton>
 #include <thread>
+#include <QStackedWidget>
 #include "topwidgetelement.h"
 #include "cysignalwidget.h"
 #include "cyvoicebackstagebtn.h"
 #include "cypaintcircle.h"
+#include "cylogin.h"
+#include "cyusertowerwidget.h"
+
 
 class mainWidget : public QWidget
 {
@@ -22,12 +26,19 @@ public:
 
     //区域控件变量
     QWidget* background_widget_;     //背景图控件
+
+    //顶部区域变量
     QWidget* top_status_widget_;     //顶层蓝色背景区域
+    //右边区域变量
+    QStackedWidget* right_stacked_widget_;    //用堆栈控件来装右边的区域
+    cyLogin* login_widget_;    //登录界面
+    cyUserTowerWidget* user_tower_widget_; //用户信息与塔吊信息
+
+    //设置界面
+
+    //左边区域变量
     QWidget* camera_widget_;         //摄像头区域
-    QWidget* user_info_widget_;     //用户信息区域
     QWidget* buttom_tower_detail_info_wiget_;   //底部塔吊详细信息区域
-    QWidget* right_tower_status_widget_;  //右边塔吊略缩图区域
-    QWidget* right_tower_chart_widget_; //右边塔吊图表
 
     //布局变量
     QGridLayout* main_grid_layout_;     //主布局
@@ -36,8 +47,9 @@ private:
     void initTopStatusArea();   //初始化顶部状态栏
     void initCameraArea();      //初始化摄像头区域
     void initUserInfoArea();    //初始化用户信息区域
+    void initLoginArea();       //初始化登录区域
+    void initSettingArea();     //初始化设置区域
     void initButtonDetailInfoArea();    //初始化塔吊底部详细信息区域
-    void initRightTowerStatusArea();    //初始化右边塔吊略缩图区域
 
 private:
     std::thread thread_get_time_;   //获取时间线程
@@ -45,5 +57,7 @@ private:
 
     /* 重设大小 */
     void resizeEvent(QResizeEvent *event);
+private slots:
+    void onChangeCurrentWidget();
 };
 #endif // MAINWIDGET_H

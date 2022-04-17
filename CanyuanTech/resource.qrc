@@ -24,5 +24,9 @@
         <file>pictures/main_page_pics/wind_speed_pic.png</file>
         <file>pictures/main_page_pics/vertical_mark_pic_2x.png</file>
         <file>pictures/main_page_pics/bottom_widget_background_pic.png</file>
+        <file>pictures/main_page_pics/login_pic.png</file>
+        <file>pictures/main_page_pics/login_button_pic.png</file>
+        <file>pictures/main_page_pics/login_cancel_pic.png</file>
+        <file>pictures/main_page_pics/login_reboot_pic.png</file>
     </qresource>
 </RCC>
