@@ -19,6 +19,7 @@ SOURCES += \
     cybackstagepages.cpp \
     cylogin.cpp \
     cypaintcircle.cpp \
+    cypushbutton.cpp \
     cysignalwidget.cpp \
     cyusertowerwidget.cpp \
     cyvoicebackstagebtn.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     cybackstagepages.h \
     cylogin.h \
     cypaintcircle.h \
+    cypushbutton.h \
     cysignalwidget.h \
     cyusertowerwidget.h \
     cyvoicebackstagebtn.h \

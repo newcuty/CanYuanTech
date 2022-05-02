@@ -3,6 +3,7 @@
 #define CYLOGIN_H
 
 #include "global.h"
+#include "cypushbutton.h"
 
 class cyLogin : public QWidget
 {
@@ -18,8 +19,8 @@ private:
     QLineEdit* account_line_edit_;   //账户编辑框
     QLineEdit* password_line_edit_;  //密码编辑框
     QPushButton* login_button_;     //登录按钮
-    QPushButton* cancel_login_button_;   //取消登录按钮
-    QPushButton* system_reboot_button_;  //系统重启按钮
+    cyPushButton* cancle_login_pushButton_;  //取消登录按钮
+    cyPushButton* system_reboot_pushbutton_;    //系统重启按钮
     QFrame* splite_line_;   //分割线
 
     QVBoxLayout* vertical_layout_;  //登录界面主布局
@@ -28,7 +29,13 @@ private:
 private:
     void resizeEvent(QResizeEvent *event);
 
+public slots:
+    void slotCancleLogin(); //取消登录槽函数
+    void slotSystemReboot();    //重启系统槽函数
+
 signals:
+
+
 
 };
 
