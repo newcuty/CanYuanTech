@@ -32,7 +32,8 @@ void cyLogin::init()
                                        background: rgba(0, 46, 175, 0.55); \
                                        border-radius: 35px; \
                                        border: 1px solid #FFFFFF;\
-                                       background-color:transparent;                                      qproperty-alignment:AlignHCenter; \
+                                       background-color:transparent; \
+                                       qproperty-alignment:AlignHCenter; \
                                        font-size:24px; \
                                        font-weight: 400; \
                                        color: #CFE2FF; \
@@ -61,7 +62,7 @@ void cyLogin::init()
     splite_line_ = new QFrame();
     splite_line_->setStyleSheet("QFrame{background:#FFFFFF;min-width:2px}");
 
-//    //底部水平布局
+    //底部水平布局
     horzion_button_layout_ = new QHBoxLayout();
     horzion_button_layout_->addStretch();
     horzion_button_layout_->addWidget(cancle_login_pushButton_);

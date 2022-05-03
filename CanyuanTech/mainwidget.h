@@ -11,6 +11,7 @@
 #include "cypaintcircle.h"
 #include "cylogin.h"
 #include "cyusertowerwidget.h"
+#include "cybottomwidgetelement.h"
 
 
 class mainWidget : public QWidget
@@ -20,7 +21,10 @@ class mainWidget : public QWidget
 public:
     mainWidget(QWidget *parent = nullptr);
     ~mainWidget();
+
     topWidgetElement* topwidget_[5];     //顶层元素变量
+    QMap<QString, topWidgetElement*>topwidget_map_;  //顶层元素
+
     cySignalWidget* signalWidget_[2];    //顶层信号控件
     cyVoiceBackstageBtn* voice_backagestage_btn_;   //后台声音按钮
 
@@ -29,16 +33,18 @@ public:
 
     //顶部区域变量
     QWidget* top_status_widget_;     //顶层蓝色背景区域
+
     //右边区域变量
     QStackedWidget* right_stacked_widget_;    //用堆栈控件来装右边的区域
     cyLogin* login_widget_;    //登录界面
     cyUserTowerWidget* user_tower_widget_; //用户信息与塔吊信息
 
-    //设置界面
-
     //左边区域变量
     QWidget* camera_widget_;         //摄像头区域
     QWidget* buttom_tower_detail_info_wiget_;   //底部塔吊详细信息区域
+
+    //底部元素
+    QMap<QString, cyBottomWidgetElement*> bottomwidget_map_;
 
     //布局变量
     QGridLayout* main_grid_layout_;     //主布局

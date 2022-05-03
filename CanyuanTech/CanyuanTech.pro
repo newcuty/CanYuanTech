@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cybackstagepages.cpp \
+    cybottomwidgetelement.cpp \
     cylogin.cpp \
     cypaintcircle.cpp \
     cypushbutton.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 
 HEADERS += \
     cybackstagepages.h \
+    cybottomwidgetelement.h \
     cylogin.h \
     cypaintcircle.h \
     cypushbutton.h \

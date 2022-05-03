@@ -3,6 +3,8 @@
 
 #include <QTime>
 #include <chrono>
+const int top_element_spcing = 40;
+const int bottom_element_spacing = 0;
 
 mainWidget::mainWidget(QWidget *parent)
     : QWidget(parent)
@@ -11,9 +13,6 @@ mainWidget::mainWidget(QWidget *parent)
     this->setMinimumSize(1600, 900);
     this->setMaximumSize(1600, 900);
     this->setWindowFlags(Qt::WindowStaysOnTopHint);
-
-    //主界面整体布局
-    //main_grid_layout_ = new QGridLayout(this);
 
     //构建背景图片
     background_widget_ = new QWidget(this);
@@ -56,12 +55,16 @@ mainWidget::mainWidget(QWidget *parent)
     mainHorizonLayout->setStretchFactor(top_status_widget_, 1);
     mainHorizonLayout->setStretchFactor(middleLayout, 6);
 
+///////////////////////////////////////////////////////////////////
     //构建主界面布局，主界面分成两个区域  暂时不用这个
+    //主界面整体布局
+    //main_grid_layout_ = new QGridLayout(this);
     //main_grid_layout_->addWidget(top_status_widget_, 0, 0, 1, 2);
     //main_grid_layout_->addLayout(middleLayout,1, 0, 1, 2);
 
     //main_grid_layout_->setRowStretch(0, 1);
     //main_grid_layout_->setRowStretch(1, 7);
+///////////////////////////////////////////////////////////
 }
 
 mainWidget::~mainWidget()
@@ -80,33 +83,40 @@ void mainWidget::initTopStatusArea()
     top_status_widget_->setStyleSheet("border-image:url(:/pictures/main_page_pics/top_widget_background_pic.png);");
 
     //构建状态栏图标信息
-    topwidget_[0] = new topWidgetElement();
-    topwidget_[0] ->init(QString("型号"), QString("CY-TW-2"));
+    topWidgetElement* type = new topWidgetElement();
+    type->init(QString("型号"), QString("CY-TW-2"));
 
-    topwidget_[1] = new topWidgetElement();
-    topwidget_[1] ->init(QString("设备ID"), QString("123456789"));
+    topWidgetElement* device = new topWidgetElement();
+    device->init(QString("设备ID"), QString("123456789"));
 
-    topwidget_[2] = new topWidgetElement();
-    topwidget_[2] ->init(QString("ICCID"), QString("89765431"));
+    topWidgetElement* iccid = new topWidgetElement();
+    iccid->init(QString("ICCID"), QString("89765431"));
 
-    topwidget_[3] = new topWidgetElement();
-    topwidget_[3] ->init(QString("日期"), QString(""));
-    //topwidget_[3] ->setGeometry(447, 0, 155, 80);
+    topWidgetElement* date = new topWidgetElement();
+    date->init(QString("日期"), QString(""));
+
+    //累计运行时间控件
+    topWidgetElement* totalTime = new topWidgetElement();
+    totalTime->init(QString("累计运行时间"), QString(""));
+
+    topwidget_map_.insert("型号", type);
+    topwidget_map_.insert("设备ID", device);
+    topwidget_map_.insert("ICCID", iccid);
+    topwidget_map_.insert("日期", date);
+    topwidget_map_.insert("累计运行时间", totalTime);
+
 
     exit_thread_flag_ = false;
-    thread_get_time_ = std::thread(std::bind([this](){
+    thread_get_time_ = std::thread(std::bind([&](){
         while(!exit_thread_flag_){
             //获取时间线程
             QDateTime date = QDateTime::currentDateTime();
             QString strDate = date.toString("yyyy-MM-dd hh:mm:ss");
-            topwidget_[3]->setInfo(strDate);
+            topwidget_map_["日期"]->setInfo(strDate);
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }));
 
-    //累计运行时间控件
-    topwidget_[4] = new topWidgetElement();
-    topwidget_[4] ->init(QString("累计运行时间"), QString(""));
 
     //构建GPS信号显示控件
     signalWidget_[0] = new cySignalWidget();
@@ -121,21 +131,28 @@ void mainWidget::initTopStatusArea()
 
     //顶部状态栏布局
     horizon_top_status_layout_ = new QHBoxLayout(top_status_widget_);
-    /******顶部布局添加控件*******/
-    for(int i = 0; i < 5; i++)
-    {
-        horizon_top_status_layout_->addWidget(topwidget_[i]);
-    }
+    horizon_top_status_layout_->addWidget(type);
+    horizon_top_status_layout_->addSpacing(top_element_spcing);
+    horizon_top_status_layout_->addWidget(device);
+    horizon_top_status_layout_->addSpacing(top_element_spcing);
+    horizon_top_status_layout_->addWidget(iccid);
+    horizon_top_status_layout_->addSpacing(top_element_spcing);
+    horizon_top_status_layout_->addWidget(date);
+    horizon_top_status_layout_->addSpacing(top_element_spcing);
+    horizon_top_status_layout_->addWidget(totalTime);
+    horizon_top_status_layout_->addSpacing(150);
 
     for(int i = 0; i < 2; i++)
     {
         horizon_top_status_layout_->addWidget(signalWidget_[i]);
     }
 
-    horizon_top_status_layout_->addStretch();
+    horizon_top_status_layout_->addSpacing(top_element_spcing);
     horizon_top_status_layout_->addWidget(voice_backagestage_btn_);
+
     /******顶部布局添加控件结束*********/
 
+    horizon_top_status_layout_->addSpacing(top_element_spcing);
     //设置顶部布局
     top_status_widget_->setLayout(horizon_top_status_layout_);
 
@@ -164,15 +181,57 @@ void mainWidget::initLoginArea()
     //添加控件到堆栈窗口
     right_stacked_widget_->addWidget(login_widget_);
 
-    //跳转事件
+    //跳转控件事件
     connect(login_widget_->getButton(), &QPushButton::clicked, this, &mainWidget::onChangeCurrentWidget);
 
 }
 
 void mainWidget::initButtonDetailInfoArea()
 {
+    //初始化底部控件
     buttom_tower_detail_info_wiget_ = new QWidget(this);
-    buttom_tower_detail_info_wiget_->setStyleSheet("border-image:url(:/pictures/main_page_pics/bottom_widget_background_pic.png);");
+    buttom_tower_detail_info_wiget_->setStyleSheet("border-image:url"
+                                                   "(:/pictures/main_page_pics/bottom_widget_background_pic.png);");
+
+    //重量显示卡
+    cyBottomWidgetElement* weightWidget = new cyBottomWidgetElement(this);
+    weightWidget->init(":/pictures/main_page_pics/weidget_pic.png", "重量");
+    //幅度显示卡
+    cyBottomWidgetElement* rangeWidget = new cyBottomWidgetElement(this);
+    rangeWidget->init(":/pictures/main_page_pics/range_pic.png", "幅度");
+    //力矩显示卡
+    cyBottomWidgetElement* momentWidget = new cyBottomWidgetElement(this);
+    momentWidget->init(":/pictures/main_page_pics/moment_pic.png", "力矩");
+    //高度显示卡
+    cyBottomWidgetElement* heightWidget = new cyBottomWidgetElement(this);
+    heightWidget->init(":/pictures/main_page_pics/heigth_pic.png", "高度");
+    //回转显示卡
+    cyBottomWidgetElement* rotateWidget = new cyBottomWidgetElement(this);
+    rotateWidget->init(":/pictures/main_page_pics/rotate_pic.png", "回转");
+    //倾角显示卡
+    cyBottomWidgetElement* dipAngleWidget = new cyBottomWidgetElement(this);
+    dipAngleWidget->init(":/pictures/main_page_pics/dip_angle_pic.png", "倾角");
+    //风速显示卡
+    cyBottomWidgetElement* windWidget = new cyBottomWidgetElement(this);
+    windWidget->init(":/pictures/main_page_pics/wind_speed_pic.png", "风速");
+
+
+    QHBoxLayout* hMainLayout = new QHBoxLayout(buttom_tower_detail_info_wiget_);
+    hMainLayout->addWidget(weightWidget);
+    hMainLayout->addWidget(rangeWidget);
+    hMainLayout->addWidget(momentWidget);
+    hMainLayout->addWidget(heightWidget);
+    hMainLayout->addWidget(rotateWidget);
+    hMainLayout->addWidget(dipAngleWidget);
+    hMainLayout->addWidget(windWidget);
+
+    bottomwidget_map_.insert(QString("重量"), weightWidget);
+    bottomwidget_map_.insert(QString("幅度"), rangeWidget);
+    bottomwidget_map_.insert(QString("力矩"), momentWidget);
+    bottomwidget_map_.insert(QString("高度"), heightWidget);
+    bottomwidget_map_.insert(QString("回转"), rotateWidget);
+    bottomwidget_map_.insert(QString("倾角"), dipAngleWidget);
+    bottomwidget_map_.insert(QString("风速"), windWidget);
 }
 
 
@@ -192,6 +251,7 @@ void mainWidget::resizeEvent(QResizeEvent *event)
 
 void mainWidget::onChangeCurrentWidget()
 {
+    //设置当前堆栈控件
     right_stacked_widget_->setCurrentWidget(user_tower_widget_);
 }
 
