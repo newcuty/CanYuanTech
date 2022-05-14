@@ -24,6 +24,7 @@ SOURCES += \
     cypushbutton.cpp \
     cysignalwidget.cpp \
     cyswitchbutton.cpp \
+    cyswitchbuttonwidget.cpp \
     cyusertowerwidget.cpp \
     cyvoicebackstagebtn.cpp \
     main.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     cypushbutton.h \
     cysignalwidget.h \
     cyswitchbutton.h \
+    cyswitchbuttonwidget.h \
     cyusertowerwidget.h \
     cyvoicebackstagebtn.h \
     global.h \

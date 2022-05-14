@@ -25,7 +25,6 @@ void cyUserTowerWidget::init()
     //初始化主布局
     main_vertical_layout_ = new QVBoxLayout(this);
     main_vertical_layout_->addWidget(user_info_widget_);
-//    main_vertical_layout_->addStretch();
     main_vertical_layout_->addSpacing(10);
     main_vertical_layout_->addLayout(horizon_layout_);
     main_vertical_layout_->setStretchFactor(user_info_widget_, 2);

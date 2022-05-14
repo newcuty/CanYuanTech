@@ -30,6 +30,9 @@ mainWidget::mainWidget(QWidget *parent)
     initBottomDetailInfoArea();
     initBackagePage();
 
+    //初始化界面为登录界面
+    current_page_ = CY_LOGIN;
+
     //左边摄像头与底部状态布局
     QVBoxLayout* leftWidgetLayout = new QVBoxLayout;
     leftWidgetLayout->addWidget(camera_widget_);
@@ -190,7 +193,7 @@ void mainWidget::initLoginArea()
     //添加控件到堆栈窗口
     right_stacked_widget_->addWidget(login_widget_);
 
-    //跳转控件事件
+    //登录跳转控件事件
     connect(login_widget_->getButton(), &QPushButton::clicked, this, &mainWidget::onChangeToTowerWidget);
 
 }
@@ -264,24 +267,37 @@ void mainWidget::resizeEvent(QResizeEvent *event)
     top_status_widget_->resize(1920, 130);
     camera_widget_->resize(1015,680);       //数值大小来源于蓝湖原型图
     buttom_tower_detail_info_wiget_->resize(1035, 124);
-    right_stacked_widget_->resize(589, 820);
+    right_stacked_widget_->resize(569, 4214);
 }
 
 void mainWidget::onChangeToTowerWidget()
 {
-    //控制塔被初始化之后
-    //if (user_tower_widget_)
-    {
-        //设置当前堆栈控件
-        right_stacked_widget_->setCurrentWidget(user_tower_widget_);
-    }
+    //跳转至用户界面
+    current_page_ = CY_USERINFO;
+    //设置当前堆栈控件
+    right_stacked_widget_->setCurrentWidget(user_tower_widget_);
 
 }
 
 void mainWidget::onChangeToBackStageWidget()
 {
-    //设置当前界面为后台界面
-    right_stacked_widget_->setCurrentWidget(backstage_page_);
+    //登录界面无法跳转至该界面
+    if (current_page_ == CY_LOGIN)
+    {
+        return;
+    }
+
+    if (current_page_ != CY_SETTINGS)
+    {
+        current_page_ = CY_SETTINGS;
+        //设置当前界面为后台界面
+        right_stacked_widget_->setCurrentWidget(backstage_page_);
+    }
+    else
+    {
+        current_page_ = CY_USERINFO;
+        right_stacked_widget_->setCurrentWidget(user_tower_widget_);
+    }
 }
 
 

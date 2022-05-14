@@ -5,20 +5,25 @@
 
 #include "global.h"
 #include "cylineedit.h"
-#include "cyswitchbutton.h"
+#include "cyswitchbuttonwidget.h"
 
 class cyBackStagePages : public QWidget
 {
     Q_OBJECT
 public:
     explicit cyBackStagePages(QWidget *parent = nullptr);
-//    cyBackStagePages(const QString& back_stage_name, const QString& icon_path, const enum_backstage_widget& type);
+
+    void initTowerInfoLayout();
+    void initOverloadTable();
+    void addTips(const QString& info);
+    void initTowerInstallInfo();
+    void addSplite();
+    void initFuntionSwitch();
 
     void initMainLayout();
-    void addTips(const QString& info);
-    void initTowerInfoLayout();
-    void initTowerInstallInfo();
-    void initOverloadTable();
+
+private:
+    QHBoxLayout* initTopLayout(const QString& icon_path, const QString& title);
 
 private:
 //    QWidget* background_widget; //背景图片
@@ -28,12 +33,10 @@ private:
     //塔机信息选项卡
     QWidget* tower_info_wiget_; //塔机信息控件
     QMap<QString, QVector<cyLineEdit*>> tower_info_map_; //存放塔机具体信息
+    QVector<cySwitchButtonWidget*> switch_button_vector_;   //
 
     //塔机安装信息
-    QWidget* tower_install_info_widget_;    //塔机安装信息控件
-    QMap<QString, QVector<cyLineEdit*>>tower_install_info_map_; //存放塔机安装具体信息
-
-    //
+    //QWidget* tower_install_info_widget_;    //塔机安装信息控件
 
 
 signals:

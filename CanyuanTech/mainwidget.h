@@ -64,7 +64,7 @@ private:
 private:
     std::thread thread_get_time_;   //获取时间线程
     bool exit_thread_flag_;     //退出线程表示 true为退出，false 为不退出
-
+    CurrentPage current_page_;  //当前界面
     /* 重设大小 */
     void resizeEvent(QResizeEvent *event);
 private slots:

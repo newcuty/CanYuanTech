@@ -24,11 +24,11 @@
 #include <stdlib.h>
 
 //堆栈控件容器枚举
-enum enum_current_widget{
+typedef enum enum_current_widget{
     CY_LOGIN,       //登录界面
     CY_USERINFO,    //用户信息
     CY_SETTINGS     //设置界面
-};
+} CurrentPage;
 
 enum enum_backstage_widget{
     CY_EDIT = 3,       //一般编辑界面
