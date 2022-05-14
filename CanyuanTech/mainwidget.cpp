@@ -16,16 +16,19 @@ mainWidget::mainWidget(QWidget *parent)
 
     //构建背景图片
     background_widget_ = new QWidget(this);
-    background_widget_->setStyleSheet("border-image:url(:/pictures/main_page_pics/background_pic.png)");
+    background_widget_->setObjectName("background_widget");
+    background_widget_->setStyleSheet("#background_widget{border-image:url(:/pictures/main_page_pics/background_pic.png);}");
 
     //堆栈控件变量
     right_stacked_widget_ = new QStackedWidget(this);
 
+    //初始化各个部分
     initTopStatusArea();
     initCameraArea();
     initUserInfoArea();
     initLoginArea();
-    initButtonDetailInfoArea();
+    initBottomDetailInfoArea();
+    initBackagePage();
 
     //左边摄像头与底部状态布局
     QVBoxLayout* leftWidgetLayout = new QVBoxLayout;
@@ -80,7 +83,9 @@ void mainWidget::initTopStatusArea()
 {
     //构建顶层蓝色背景， 并初始化该区域
     top_status_widget_ = new QWidget(this);
-    top_status_widget_->setStyleSheet("border-image:url(:/pictures/main_page_pics/top_widget_background_pic.png);");
+    top_status_widget_->setObjectName("top_status_widget");
+    top_status_widget_->setStyleSheet("#top_status_widget{"
+                                      "border-image:url(:/pictures/main_page_pics/top_widget_background_pic.png);}");
 
     //构建状态栏图标信息
     topWidgetElement* type = new topWidgetElement();
@@ -119,17 +124,21 @@ void mainWidget::initTopStatusArea()
 
 
     //构建GPS信号显示控件
-    signalWidget_[0] = new cySignalWidget();
-    signalWidget_[0]->init(":/pictures/main_page_pics/GPS_button_pic.png", "GPS信号强度");
+    cySignalWidget* gpsSignal = new cySignalWidget();
+    gpsSignal->init(":/pictures/main_page_pics/GPS_button_pic.png", "GPS信号强度");
 
     //构建4G信号显示控件
-    signalWidget_[1] = new cySignalWidget();
-    signalWidget_[1]->init(":/pictures/main_page_pics/4G_signal_pic.png", "4G信号强度");
+    cySignalWidget* _4GSignal = new cySignalWidget();
+    _4GSignal->init(":/pictures/main_page_pics/4G_signal_pic.png", "4G信号强度");
+
+    signale_.insert("GPS", gpsSignal);
+    signale_.insert("4G", _4GSignal);
 
     voice_backagestage_btn_ = new cyVoiceBackstageBtn();
     voice_backagestage_btn_->init();
 
     //顶部状态栏布局
+    //添加各个组件
     horizon_top_status_layout_ = new QHBoxLayout(top_status_widget_);
     horizon_top_status_layout_->addWidget(type);
     horizon_top_status_layout_->addSpacing(top_element_spcing);
@@ -140,15 +149,15 @@ void mainWidget::initTopStatusArea()
     horizon_top_status_layout_->addWidget(date);
     horizon_top_status_layout_->addSpacing(top_element_spcing);
     horizon_top_status_layout_->addWidget(totalTime);
-    horizon_top_status_layout_->addSpacing(150);
+    horizon_top_status_layout_->addSpacing(50);
+    horizon_top_status_layout_->addWidget(gpsSignal);
+    horizon_top_status_layout_->addWidget(_4GSignal);
 
-    for(int i = 0; i < 2; i++)
-    {
-        horizon_top_status_layout_->addWidget(signalWidget_[i]);
-    }
-
+    //添加信号组件
     horizon_top_status_layout_->addSpacing(top_element_spcing);
+    //添加后台按钮组件
     horizon_top_status_layout_->addWidget(voice_backagestage_btn_);
+    connect(voice_backagestage_btn_->getBackageBtn(), &QPushButton::clicked, this, &mainWidget::onChangeToBackStageWidget);
 
     /******顶部布局添加控件结束*********/
 
@@ -182,16 +191,17 @@ void mainWidget::initLoginArea()
     right_stacked_widget_->addWidget(login_widget_);
 
     //跳转控件事件
-    connect(login_widget_->getButton(), &QPushButton::clicked, this, &mainWidget::onChangeCurrentWidget);
+    connect(login_widget_->getButton(), &QPushButton::clicked, this, &mainWidget::onChangeToTowerWidget);
 
 }
 
-void mainWidget::initButtonDetailInfoArea()
+void mainWidget::initBottomDetailInfoArea()
 {
     //初始化底部控件
     buttom_tower_detail_info_wiget_ = new QWidget(this);
-    buttom_tower_detail_info_wiget_->setStyleSheet("border-image:url"
-                                                   "(:/pictures/main_page_pics/bottom_widget_background_pic.png);");
+    buttom_tower_detail_info_wiget_->setObjectName("buttom_tower_detail_info_wiget");
+    buttom_tower_detail_info_wiget_->setStyleSheet("buttom_tower_detail_info_wiget{border-image:url"
+                                                   "(:/pictures/main_page_pics/bottom_widget_background_pic.png);}");
 
     //重量显示卡
     cyBottomWidgetElement* weightWidget = new cyBottomWidgetElement(this);
@@ -225,6 +235,7 @@ void mainWidget::initButtonDetailInfoArea()
     hMainLayout->addWidget(dipAngleWidget);
     hMainLayout->addWidget(windWidget);
 
+    //添加底部每个元素至map， 方便管理
     bottomwidget_map_.insert(QString("重量"), weightWidget);
     bottomwidget_map_.insert(QString("幅度"), rangeWidget);
     bottomwidget_map_.insert(QString("力矩"), momentWidget);
@@ -232,6 +243,13 @@ void mainWidget::initButtonDetailInfoArea()
     bottomwidget_map_.insert(QString("回转"), rotateWidget);
     bottomwidget_map_.insert(QString("倾角"), dipAngleWidget);
     bottomwidget_map_.insert(QString("风速"), windWidget);
+}
+
+void mainWidget::initBackagePage()
+{
+    //将后台界面添加至栈控件
+    backstage_page_ = new cyBackStagePages(this);
+    right_stacked_widget_->addWidget(backstage_page_);
 }
 
 
@@ -249,9 +267,21 @@ void mainWidget::resizeEvent(QResizeEvent *event)
     right_stacked_widget_->resize(589, 820);
 }
 
-void mainWidget::onChangeCurrentWidget()
+void mainWidget::onChangeToTowerWidget()
 {
-    //设置当前堆栈控件
-    right_stacked_widget_->setCurrentWidget(user_tower_widget_);
+    //控制塔被初始化之后
+    //if (user_tower_widget_)
+    {
+        //设置当前堆栈控件
+        right_stacked_widget_->setCurrentWidget(user_tower_widget_);
+    }
+
 }
+
+void mainWidget::onChangeToBackStageWidget()
+{
+    //设置当前界面为后台界面
+    right_stacked_widget_->setCurrentWidget(backstage_page_);
+}
+
 

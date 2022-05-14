@@ -24,8 +24,6 @@ cyVoiceBackstageBtn::~cyVoiceBackstageBtn()
 
 }
 
-
-//该类当前问题：图片大小不对；按钮上面需要添加文字
 void cyVoiceBackstageBtn::init()
 {
     if (!voice_btn_)
@@ -34,9 +32,14 @@ void cyVoiceBackstageBtn::init()
     }
     //设置声音按钮背景图片
     QPixmap pixmapVoice(":/pictures/main_page_pics/voice_button_pic.png");
-    voice_btn_->setStyleSheet("border-image:url(:/pictures/main_page_pics/voice_button_pic.png);border:0px");
+    voice_btn_->setStyleSheet("QPushButton{border-image:url(:/pictures/main_page_pics/voice_button_pic.png);"
+                              "border:0px;"
+                              "text-align: center;"
+                              "padding-right:20px;"
+                              "font-size: 16px;"
+                              "color: #FFFFFF;}");
     voice_btn_->setFixedSize(188, 66);
-    //voice_btn_->setText("声音");
+    voice_btn_->setText("声音");
 
 
     if(!backstage_btn_)
@@ -45,14 +48,19 @@ void cyVoiceBackstageBtn::init()
     }
 
     //设置后台按钮背景图片
-    QPixmap pixmapBackStage(":/pictures/main_page_pics/back_stage_pic.png");
-    backstage_btn_->setStyleSheet("border-image:url(:/pictures/main_page_pics/back_stage_pic.png)");
+    //QPixmap pixmapBackStage(":/pictures/main_page_pics/back_stage_pic.png");
+    backstage_btn_->setStyleSheet("QPushButton{ border-image:url(:/pictures/main_page_pics/back_stage_pic.png);"
+                                  "text-align: right;"
+                                  "padding-right:20px;"
+                                  "font-size: 16px;"
+                                  "color: #FFFFFF;}");
     backstage_btn_->setFixedSize(120, 66);
+    backstage_btn_->setText("后台");
 
     //布局按钮
     QHBoxLayout* hLayout = new QHBoxLayout(this);
     hLayout->addWidget(voice_btn_);
-    hLayout->setSpacing(5);
+    hLayout->setSpacing(15);
     hLayout->addWidget(backstage_btn_);
 
     this->setLayout(hLayout);

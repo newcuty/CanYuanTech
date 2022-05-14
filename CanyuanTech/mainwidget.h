@@ -12,6 +12,7 @@
 #include "cylogin.h"
 #include "cyusertowerwidget.h"
 #include "cybottomwidgetelement.h"
+#include "cybackstagepages.h"
 
 
 class mainWidget : public QWidget
@@ -24,8 +25,7 @@ public:
 
     topWidgetElement* topwidget_[5];     //顶层元素变量
     QMap<QString, topWidgetElement*>topwidget_map_;  //顶层元素
-
-    cySignalWidget* signalWidget_[2];    //顶层信号控件
+    QMap<QString, cySignalWidget*>signale_;
     cyVoiceBackstageBtn* voice_backagestage_btn_;   //后台声音按钮
 
     //区域控件变量
@@ -49,13 +49,17 @@ public:
     //布局变量
     QGridLayout* main_grid_layout_;     //主布局
     QHBoxLayout* horizon_top_status_layout_;    //顶部状态布局
+
+    //后台控件
+    cyBackStagePages* backstage_page_;
 private:
     void initTopStatusArea();   //初始化顶部状态栏
     void initCameraArea();      //初始化摄像头区域
     void initUserInfoArea();    //初始化用户信息区域
     void initLoginArea();       //初始化登录区域
     void initSettingArea();     //初始化设置区域
-    void initButtonDetailInfoArea();    //初始化塔吊底部详细信息区域
+    void initBottomDetailInfoArea();    //初始化塔吊底部详细信息区域
+    void initBackagePage(); //初始化后台界面
 
 private:
     std::thread thread_get_time_;   //获取时间线程
@@ -64,6 +68,7 @@ private:
     /* 重设大小 */
     void resizeEvent(QResizeEvent *event);
 private slots:
-    void onChangeCurrentWidget();
+    void onChangeToTowerWidget();
+    void onChangeToBackStageWidget();
 };
 #endif // MAINWIDGET_H

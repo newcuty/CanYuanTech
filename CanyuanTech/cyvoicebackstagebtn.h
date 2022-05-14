@@ -12,6 +12,13 @@ public:
     ~cyVoiceBackstageBtn();
 
     void init(); //初始化按钮
+    QPushButton* getBackageBtn(){
+        if (!backstage_btn_){
+            return nullptr;
+        }
+        return backstage_btn_;
+    }
+private:
     QPushButton* voice_btn_;    //声音按钮
     QPushButton* backstage_btn_;    //后台按钮
 

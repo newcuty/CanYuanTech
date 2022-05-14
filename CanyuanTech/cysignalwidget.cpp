@@ -44,6 +44,11 @@ void cySignalWidget::init(const QString &icon_path, const QString &info)
     }
 
     //设置文字
+    info_label_->setStyleSheet("QLabel {font-size:12px;color:#D4EBFF;"
+                               "border-radius:14px;"
+                               "padding:2px 4px;"
+                               "border:1px groove #D4EBFF;"
+                               "margin:5px;}");
     info_label_->setText(info);
 
     //构建垂直布局
@@ -51,11 +56,12 @@ void cySignalWidget::init(const QString &icon_path, const QString &info)
      //添加元素
     vLayout->addWidget(icon_label_);
     vLayout->addWidget(info_label_);
+    vLayout->addStretch();
      //设置元素在控件中的位置
     vLayout->setAlignment(icon_label_, Qt::AlignCenter);
     vLayout->setAlignment(info_label_, Qt::AlignLeft);
 
-    this->setLayout(vLayout);
+    //this->setLayout(vLayout);
 }
 
 void cySignalWidget::setIcon(const QString &icon_path)

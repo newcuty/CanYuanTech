@@ -28,5 +28,21 @@
         <file>pictures/main_page_pics/login_button_pic.png</file>
         <file>pictures/main_page_pics/login_cancel_pic.png</file>
         <file>pictures/main_page_pics/login_reboot_pic.png</file>
+        <file>pictures/backstage_icon/add_new_pic.png</file>
+        <file>pictures/backstage_icon/alarm_pic.png</file>
+        <file>pictures/backstage_icon/data_standard_pic.png</file>
+        <file>pictures/backstage_icon/del_pic.png</file>
+        <file>pictures/backstage_icon/dot_pic.png</file>
+        <file>pictures/backstage_icon/function_switch_pic.png</file>
+        <file>pictures/backstage_icon/ID_input_pic.png</file>
+        <file>pictures/backstage_icon/off_pic.png</file>
+        <file>pictures/backstage_icon/on_pic.png</file>
+        <file>pictures/backstage_icon/split_line_pic.png</file>
+        <file>pictures/backstage_icon/system_setting_pic.png</file>
+        <file>pictures/backstage_icon/tower_area_pic.png</file>
+        <file>pictures/backstage_icon/tower_info_pic.png</file>
+        <file>pictures/backstage_icon/tower_install_info_pic.png</file>
+        <file>pictures/backstage_icon/tower_load_pic.png</file>
+        <file>pictures/backstage_icon/warning_pic.png</file>
     </qresource>
 </RCC>

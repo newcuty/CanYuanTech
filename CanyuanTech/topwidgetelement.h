@@ -21,7 +21,7 @@ private:
     QLabel* icon_label_;   //
     QLabel*  type_name_label_;     //
     QLabel*  type_detail_label_;  //
-    QGridLayout* gridLayout_;
+    QVBoxLayout* main_layout_;
 
 signals:
 

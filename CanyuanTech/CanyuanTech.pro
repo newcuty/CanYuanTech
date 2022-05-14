@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cybackstagepages.cpp \
     cybottomwidgetelement.cpp \
+    cylineedit.cpp \
     cylogin.cpp \
     cypaintcircle.cpp \
     cypushbutton.cpp \
     cysignalwidget.cpp \
+    cyswitchbutton.cpp \
     cyusertowerwidget.cpp \
     cyvoicebackstagebtn.cpp \
     main.cpp \
@@ -31,10 +33,12 @@ SOURCES += \
 HEADERS += \
     cybackstagepages.h \
     cybottomwidgetelement.h \
+    cylineedit.h \
     cylogin.h \
     cypaintcircle.h \
     cypushbutton.h \
     cysignalwidget.h \
+    cyswitchbutton.h \
     cyusertowerwidget.h \
     cyvoicebackstagebtn.h \
     global.h \

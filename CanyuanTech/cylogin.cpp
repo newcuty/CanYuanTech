@@ -7,37 +7,39 @@ cyLogin::cyLogin(QWidget *parent) : QWidget(parent)
 
 void cyLogin::init()
 {
+
     //初始化背景图
     background_widget_ = new QWidget(this);
-    background_widget_->setStyleSheet("border-image:url(:/pictures/main_page_pics/login_pic.png);");
+    background_widget_->setObjectName("background_widget_");
+    background_widget_->setStyleSheet("#background_widget_{border-image:url(:/pictures/main_page_pics/login_pic.png);}");
 
     //初始化编辑框
     account_line_edit_ = new QLineEdit();
     account_line_edit_->setStyleSheet("QLineEdit{width: 368px; \
                                       height: 65px; \
-                                      background: rgba(0, 46, 175, 1); \
-                                      border-radius: 35px; \
-                                      border: 1px solid #FFFFFF; \
-                                      background-color:transparent; \
+                                      background-color: yellow;\
+                                      background:#002EAF; \
+                                      border: 2px groove #FFFFFF; \
+                                      border-radius:10px;padding:2px 4px; \
                                       qproperty-alignment:AlignHCenter; \
                                       font-size:24px; \
-                                      font-weight: 400; \
                                       color: #CFE2FF; \
+                                      font-weight: 400; \
                                       line-height: 33px;}");
     account_line_edit_->setText(QString("请填写账号"));
 
     password_line_edit_ = new QLineEdit();
-    password_line_edit_->setStyleSheet("QLineEdit {width: 368px; \
-                                       height: 65px; \
-                                       background: rgba(0, 46, 175, 0.55); \
-                                       border-radius: 35px; \
-                                       border: 1px solid #FFFFFF;\
-                                       background-color:transparent; \
-                                       qproperty-alignment:AlignHCenter; \
-                                       font-size:24px; \
-                                       font-weight: 400; \
-                                       color: #CFE2FF; \
-                                       line-height: 33px;}");
+    password_line_edit_->setStyleSheet("QLineEdit{width: 368px; \
+                                     height: 65px; \
+                                     background-color: yellow;\
+                                     background:#002EAF; \
+                                     border: 2px groove #FFFFFF; \
+                                     border-radius:10px;padding:2px 4px; \
+                                     qproperty-alignment:AlignHCenter; \
+                                     font-size:24px; \
+                                     color: #CFE2FF; \
+                                     font-weight: 400; \
+                                     line-height: 33px;}");
     password_line_edit_->setText(QString("请填写密码"));
 
 
@@ -48,7 +50,7 @@ void cyLogin::init()
     login_button_->setMinimumSize(416, 115);
     login_button_->setStyleSheet("QPushButton{border-image:url(:/pictures/main_page_pics/login_button_pic.png); \
                                font-size:24px;color:#2359DB; \
-                            text-align:center;}");
+                                text-align:center;}");
 
     cancle_login_pushButton_ = new cyPushButton();
     cancle_login_pushButton_->init(":/pictures/main_page_pics/login_cancel_pic.png", QString("取消登陆"));

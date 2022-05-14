@@ -11,7 +11,12 @@ class cyLogin : public QWidget
 public:
     explicit cyLogin(QWidget *parent = nullptr);
     void init();    //初始化
-    QPushButton* getButton(){return login_button_;};
+    QPushButton* getButton(){
+        if (!login_button_){
+            return nullptr;
+        }
+        return login_button_;
+    };
 
 private:
     //背景界面

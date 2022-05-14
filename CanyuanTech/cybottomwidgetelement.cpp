@@ -30,9 +30,11 @@ void cyBottomWidgetElement::init(const QString &icon_path, const QString &info)
     QHBoxLayout* hLabelLayout = new QHBoxLayout();
     hLabelLayout->addWidget(icon_label_);
     hLabelLayout->addWidget(info_label_);
+    hLabelLayout->addStretch();
 
     //垂直主布局
     QVBoxLayout* mainVLayout = new QVBoxLayout(this);
+    mainVLayout->setContentsMargins(0, 0, 0, 0);
     mainVLayout->addLayout(hLabelLayout);
     mainVLayout->addWidget(data_row_2_);
     mainVLayout->addWidget(data_row_3_);
