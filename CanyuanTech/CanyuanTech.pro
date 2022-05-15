@@ -16,8 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cybackstagealarmvaluewidget.cpp \
+    cybackstagedatasetwidget.cpp \
+    cybackstagefuncswitchwidget.cpp \
+    cybackstageinputidwidget.cpp \
+    cybackstageoverloadwidget.cpp \
     cybackstagepages.cpp \
+    cybackstagesystemsettingswidget.cpp \
+    cybackstagetowerinfo.cpp \
+    cybackstagetowerinstallinfowidget.cpp \
+    cybackstagewidgets.cpp \
     cybottomwidgetelement.cpp \
+    cyinputlineeditwidget.cpp \
     cylineedit.cpp \
     cylogin.cpp \
     cypaintcircle.cpp \
@@ -32,8 +42,18 @@ SOURCES += \
     topwidgetelement.cpp
 
 HEADERS += \
+    cybackstagealarmvaluewidget.h \
+    cybackstagedatasetwidget.h \
+    cybackstagefuncswitchwidget.h \
+    cybackstageinputidwidget.h \
+    cybackstageoverloadwidget.h \
     cybackstagepages.h \
+    cybackstagesystemsettingswidget.h \
+    cybackstagetowerinfo.h \
+    cybackstagetowerinstallinfowidget.h \
+    cybackstagewidgets.h \
     cybottomwidgetelement.h \
+    cyinputlineeditwidget.h \
     cylineedit.h \
     cylogin.h \
     cypaintcircle.h \

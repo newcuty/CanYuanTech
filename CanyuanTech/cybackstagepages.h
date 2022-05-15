@@ -6,6 +6,14 @@
 #include "global.h"
 #include "cylineedit.h"
 #include "cyswitchbuttonwidget.h"
+#include "cybackstagetowerinfo.h"
+#include "cybackstageoverloadwidget.h"
+#include "cybackstagetowerinstallinfowidget.h"
+#include "cybackstagefuncswitchwidget.h"
+#include "cybackstagesystemsettingswidget.h"
+#include "cybackstagedatasetwidget.h"
+#include "cybackstagealarmvaluewidget.h"
+#include "cybackstageinputidwidget.h"
 
 class cyBackStagePages : public QWidget
 {
@@ -19,6 +27,10 @@ public:
     void initTowerInstallInfo();
     void addSplite();
     void initFuntionSwitch();
+    void initSystemSettings();
+    void initDataStandard();
+    void initAlarmValue();
+    void initInputID();
 
     void initMainLayout();
 
@@ -36,7 +48,15 @@ private:
     QVector<cySwitchButtonWidget*> switch_button_vector_;   //
 
     //塔机安装信息
-    //QWidget* tower_install_info_widget_;    //塔机安装信息控件
+    cyBackStageTowerInfo* tower_info_widget_;   //塔机安装信息组件
+    cyBackStageOverloadWidget* overload_widget_;    //荷载特性表组件
+    cyBackStageTowerInstallInfoWidget* tower_install_info_widget_;  //塔吊安装信息组件
+    cyBackStageFuncSwitchWidget* func_switch_widget_;       //功能按钮组件
+    cyBackStageSystemSettingsWidget* system_settings_widget_;   //系统设置组件
+    cyBackStageDataSetWidget* data_standard_widget_;    //数据标定组件
+    cyBackStageAlarmValueWidget* alarm_value_widget_;   //报警阀值组件
+    cyBackStageInputIDWidget* input_ID_widget_;     //身份录入组件
+
 
 
 signals:

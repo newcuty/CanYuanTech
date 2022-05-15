@@ -22,7 +22,7 @@ cyLineEdit::cyLineEdit(const QString &title, const int& length)
     //设置布局
     QHBoxLayout* h_layout = new QHBoxLayout(this);
     h_layout->addWidget(title_label_);
-    h_layout->addWidget(text_editor_);
+    h_layout->addWidget(text_editor_, Qt::AlignRight);
 
     connect(text_editor_, &QLineEdit::returnPressed, this, &cyLineEdit::setTitleInfo);
 }

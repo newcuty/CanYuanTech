@@ -4,7 +4,7 @@
 
 cySwitchButton::cySwitchButton(QWidget *parent)
     :QWidget(parent),
-      checked_(true),
+      checked_(false),
       background_color_(QColor(242,242,242)),
       checked_color_(QColor(22,68,128)),
       disabled_colo_(QColor(242,242,242)),

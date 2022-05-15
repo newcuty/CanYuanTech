@@ -44,5 +44,6 @@
         <file>pictures/backstage_icon/tower_install_info_pic.png</file>
         <file>pictures/backstage_icon/tower_load_pic.png</file>
         <file>pictures/backstage_icon/warning_pic.png</file>
+        <file>pictures/backstage_icon/lookup_history.png</file>
     </qresource>
 </RCC>
