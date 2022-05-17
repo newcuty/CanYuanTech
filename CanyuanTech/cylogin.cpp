@@ -91,6 +91,7 @@ void cyLogin::init()
 
 void cyLogin::resizeEvent(QResizeEvent *event)
 {
+    Q_UNUSED(event);
     background_widget_->resize(589, 820);
 
 }
