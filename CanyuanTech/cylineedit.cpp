@@ -24,16 +24,17 @@ cyLineEdit::cyLineEdit(const QString &title, const int& length)
     h_layout->addWidget(title_label_);
     h_layout->addWidget(text_editor_, Qt::AlignRight);
 
-    connect(text_editor_, &QLineEdit::returnPressed, this, &cyLineEdit::setTitleInfo);
+    //文本框内容改变，
+    connect(text_editor_, &QLineEdit::textChanged, this, &cyLineEdit::setTitleInfo);
 }
 
 QString cyLineEdit::getTitleInfo()
 {
-
-    return QString("");
+    return input_str;
 }
 
-void cyLineEdit::setTitleInfo()
+void cyLineEdit::setTitleInfo(const QString &str_text)
 {
-    //text_editor_->setText(info);
+    //获取输入的文本框
+    input_str = str_text;
 }

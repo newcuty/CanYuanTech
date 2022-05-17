@@ -41,6 +41,7 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 
         // 输出信息至文件中（读写、追加形式）
         QFile output_file("log.txt");
+        //output_file.open(QIODevice::ReadWrite | QIODevice::Append);
         output_file.open(QIODevice::ReadWrite | QIODevice::Append);
         QTextStream output_stream(&output_file);
         output_stream << strMessage << "\n";
@@ -57,19 +58,19 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(myMessageOutput);
 
     //read qss files
-    //    QFile file(":/qss/daytime.qss");
-    //    /* 判断文件是否存在 */
-    //    if (file.exists() ) {
-    //      printf("read qss files");
-    //     /* 以只读的方式打开 */
-    //     file.open(QFile::ReadOnly);
-    //     /* 以字符串的方式保存读出的结果 */
-    //     QString styleSheet = QLatin1String(file.readAll());
-    //     /* 设置全局样式 */
-    //     //qApp->setStyleSheet(styleSheet);
-    //     /* 关闭文件 */
-    //     file.close();
-    //    }
+//        QFile file(":/qss/daytime.qss");
+//        /* 判断文件是否存在 */
+//        if (file.exists() ) {
+//          printf("read qss files");
+//         /* 以只读的方式打开 */
+//         file.open(QFile::ReadOnly);
+//         /* 以字符串的方式保存读出的结果 */
+//         QString styleSheet = QLatin1String(file.readAll());
+//         /* 设置全局样式 */
+//         //qApp->setStyleSheet(styleSheet);
+//         /* 关闭文件 */
+//         file.close();
+//       }
 
     qDebug() << "test debug info";
     QApplication a(argc, argv);

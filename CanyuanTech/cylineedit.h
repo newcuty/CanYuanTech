@@ -12,15 +12,18 @@ public:
     cyLineEdit(const QString& title, const int& length = 107); //title：选项名称， length：文本编辑框长度
 
     QString getTitleInfo();
-    void setTitleInfo();
+
 
 private:
-    QLabel* title_label_;
-    QLineEdit* text_editor_;
-    QString title_info_;
+    QLabel* title_label_;       //
+    QLineEdit* text_editor_;    //编辑框对象
+    QString input_str;        //输入的文本框内容
 
 
 signals:
+
+private slots:
+    void setTitleInfo(const QString& str_text);
 
 };
 

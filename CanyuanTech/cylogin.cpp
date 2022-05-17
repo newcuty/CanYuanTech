@@ -27,6 +27,7 @@ void cyLogin::init()
                                       font-weight: 400; \
                                       line-height: 33px;}");
     account_line_edit_->setText(QString("请填写账号"));
+    //account_line_edit_->set
 
     password_line_edit_ = new QLineEdit();
     password_line_edit_->setStyleSheet("QLineEdit{width: 368px; \
@@ -102,4 +103,9 @@ void cyLogin::slotCancleLogin()
 void cyLogin::slotSystemReboot()
 {
     qDebug() << "system reboot";
+}
+
+void cyLogin::clearEditor()
+{
+
 }

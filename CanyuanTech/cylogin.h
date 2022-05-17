@@ -11,6 +11,7 @@ class cyLogin : public QWidget
 public:
     explicit cyLogin(QWidget *parent = nullptr);
     void init();    //初始化
+
     QPushButton* getButton(){
         if (!login_button_){
             return nullptr;
@@ -37,6 +38,7 @@ private:
 public slots:
     void slotCancleLogin(); //取消登录槽函数
     void slotSystemReboot();    //重启系统槽函数
+    void clearEditor();     //输入框点击之后，清空数据
 
 signals:
 
