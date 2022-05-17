@@ -16,10 +16,10 @@
 #include <QPainter>
 #include <QLineEdit>
 #include <QScrollArea>
-
-
 #include <QLine>
 #include <QGroupBox>
+#include <QStackedWidget>
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,14 +29,7 @@ typedef enum enum_current_widget{
     CY_USERINFO,    //用户信息
     CY_SETTINGS     //设置界面
 } CurrentPage;
-
-enum enum_backstage_widget{
-    CY_EDIT = 3,       //一般编辑界面
-    CY_SWITCH = 4,    //开关界面
-    CY_FORM = 5     //表格编辑界面
-};
-
-
+#include <QStackedWidget>
 
 
 #endif // GLOBAL_H

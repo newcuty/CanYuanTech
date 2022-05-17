@@ -1,10 +1,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include <QWidget>
-#include <QPushButton>
 #include <thread>
-#include <QStackedWidget>
 #include "topwidgetelement.h"
 #include "cysignalwidget.h"
 #include "cyvoicebackstagebtn.h"
