@@ -33,6 +33,13 @@ QString cyLineEdit::getTitleInfo()
     return input_str;
 }
 
+//清空文本框内容
+void cyLineEdit::clearText()
+{
+    text_editor_->clear();
+    input_str = "";
+}
+
 void cyLineEdit::setTitleInfo(const QString &str_text)
 {
     //获取输入的文本框

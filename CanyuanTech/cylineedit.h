@@ -12,7 +12,7 @@ public:
     cyLineEdit(const QString& title, const int& length = 107); //title：选项名称， length：文本编辑框长度
 
     QString getTitleInfo();
-
+    void clearText();       //清除编辑框的内容
 
 private:
     QLabel* title_label_;       //
