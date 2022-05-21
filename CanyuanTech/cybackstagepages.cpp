@@ -43,6 +43,9 @@ cyBackStagePages::cyBackStagePages(QWidget *parent) : QWidget(parent)
     initInputID();
     addSplite();
 
+    //区域防碰撞， 分成三部分：角禁区域，圆形禁行区， 四边形禁行区
+
+
 
 
     //添加主布局
@@ -182,6 +185,11 @@ void cyBackStagePages::initInputID()
 {
     input_ID_widget_ = new cyBackStageInputIDWidget();
     main_layout_->addWidget(input_ID_widget_);
+
+}
+
+void cyBackStagePages::initAreaAvoidCrash()
+{
 
 }
 

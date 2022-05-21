@@ -47,13 +47,14 @@ void cyBackStageInputIDWidget::init()
     label_layout_->addWidget(ID_number_label_);
     label_layout_->addWidget(driver_number_label_);
 
-    //line_edit_ = new cyInputLineEditWidget();
+    //添加编辑框
+    line_edit_ = new cyInputLineEditWidget();
 
     main_layout_ = new QVBoxLayout(this);
     main_layout_->addLayout(input_ID_top_layout_);
     main_layout_->addLayout(label_layout_);
-    //main_layout_->addWidget(line_edit_);
+    main_layout_->addWidget(line_edit_);
     main_layout_->addStretch();
 
-    //该类有double free or corruption (out) 这个错误，还未排查出问题
+    //该类有double free or corruption (out) 这个错误，还未排查出问题， windows 上无该问题
 }

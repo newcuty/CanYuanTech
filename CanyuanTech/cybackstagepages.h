@@ -31,6 +31,7 @@ public:
     void initDataStandard();
     void initAlarmValue();
     void initInputID();
+    void initAreaAvoidCrash();
 
     void initMainLayout();
 
