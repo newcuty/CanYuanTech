@@ -14,6 +14,7 @@
 #include "cybackstagedatasetwidget.h"
 #include "cybackstagealarmvaluewidget.h"
 #include "cybackstageinputidwidget.h"
+#include "cybackstageareanoncrashwidget.h"
 
 class cyBackStagePages : public QWidget
 {
@@ -57,6 +58,7 @@ private:
     cyBackStageDataSetWidget* data_standard_widget_;    //数据标定组件
     cyBackStageAlarmValueWidget* alarm_value_widget_;   //报警阀值组件
     cyBackStageInputIDWidget* input_ID_widget_;     //身份录入组件
+    cyBackStageAreaNonCrashWidget* area_non_crash_widget_;  //区域防碰撞组件
 
 
 

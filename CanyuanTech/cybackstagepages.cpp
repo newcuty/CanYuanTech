@@ -44,7 +44,7 @@ cyBackStagePages::cyBackStagePages(QWidget *parent) : QWidget(parent)
     addSplite();
 
     //区域防碰撞， 分成三部分：角禁区域，圆形禁行区， 四边形禁行区
-
+    initAreaAvoidCrash();
 
 
 
@@ -54,8 +54,6 @@ cyBackStagePages::cyBackStagePages(QWidget *parent) : QWidget(parent)
 
 void cyBackStagePages::initMainLayout()
 {
-
-
     //先设置滑动区域的布局
     scroll_main_page_ = new QScrollArea;
     scroll_main_page_->setWidgetResizable(true);
@@ -181,6 +179,7 @@ void cyBackStagePages::initAlarmValue()
     main_layout_->addWidget(alarm_value_widget_);
 }
 
+//初始化身份录入
 void cyBackStagePages::initInputID()
 {
     input_ID_widget_ = new cyBackStageInputIDWidget();
@@ -188,9 +187,11 @@ void cyBackStagePages::initInputID()
 
 }
 
+//初始化区域防碰撞
 void cyBackStagePages::initAreaAvoidCrash()
 {
-
+    area_non_crash_widget_ = new cyBackStageAreaNonCrashWidget();
+    main_layout_->addWidget(area_non_crash_widget_);
 }
 
 
