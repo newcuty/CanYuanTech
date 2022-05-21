@@ -29,7 +29,7 @@ cyInputLineEditWidget::cyInputLineEditWidget(QWidget *parent) : QWidget(parent)
                                 "color:#445975}");
 
     delete_button = new QPushButton();
-    delete_button->setStyleSheet("border-image:url(:/pictures/backstage_icon/del_pic.png;)");
+    delete_button->setStyleSheet("border-image:url(:/pictures/backstage_icon/del_pic.png);");
     connect(delete_button, &QPushButton::clicked, this, &cyInputLineEditWidget::slotDeletCurrentWidget);
 
     main_hlayout_ = new QHBoxLayout(this);
