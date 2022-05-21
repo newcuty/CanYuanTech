@@ -17,6 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cybackstagealarmvaluewidget.cpp \
+    cybackstageareanoncrashwidget.cpp \
+    cybackstagebananglearea.cpp \
+    cybackstagebancirclearea.cpp \
+    cybackstagebansquarearea.cpp \
     cybackstagedatasetwidget.cpp \
     cybackstagefuncswitchwidget.cpp \
     cybackstageinputidwidget.cpp \
@@ -43,6 +47,10 @@ SOURCES += \
 
 HEADERS += \
     cybackstagealarmvaluewidget.h \
+    cybackstageareanoncrashwidget.h \
+    cybackstagebananglearea.h \
+    cybackstagebancirclearea.h \
+    cybackstagebansquarearea.h \
     cybackstagedatasetwidget.h \
     cybackstagefuncswitchwidget.h \
     cybackstageinputidwidget.h \
