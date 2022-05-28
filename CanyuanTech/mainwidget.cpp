@@ -10,8 +10,8 @@ mainWidget::mainWidget(QWidget *parent)
     : QWidget(parent)
 {
     this->setParent(parent);
-    this->setMinimumSize(1600, 900);
-    this->setMaximumSize(1600, 900);
+    //this->setMinimumSize(1600, 900);
+    //this->setMaximumSize(1600, 900);
     this->setWindowFlags(Qt::WindowStaysOnTopHint);
 
     //构建背景图片
@@ -60,17 +60,6 @@ mainWidget::mainWidget(QWidget *parent)
     mainHorizonLayout->setStretch(2, 1);
     mainHorizonLayout->setStretchFactor(top_status_widget_, 1);
     mainHorizonLayout->setStretchFactor(middleLayout, 6);
-
-///////////////////////////////////////////////////////////////////
-    //构建主界面布局，主界面分成两个区域  暂时不用这个
-    //主界面整体布局
-    //main_grid_layout_ = new QGridLayout(this);
-    //main_grid_layout_->addWidget(top_status_widget_, 0, 0, 1, 2);
-    //main_grid_layout_->addLayout(middleLayout,1, 0, 1, 2);
-
-    //main_grid_layout_->setRowStretch(0, 1);
-    //main_grid_layout_->setRowStretch(1, 7);
-///////////////////////////////////////////////////////////
 }
 
 mainWidget::~mainWidget()

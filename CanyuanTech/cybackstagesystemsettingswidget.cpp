@@ -7,8 +7,9 @@ cyBackStageSystemSettingsWidget::cyBackStageSystemSettingsWidget()
 
 void cyBackStageSystemSettingsWidget::init()
 {
+    lookup_history_button_ = new QPushButton();
     system_settings_top_layout_ = initTopLayout(":/pictures/backstage_icon/system_setting_pic.png", "系统设置",
-                                                lookup_history_button_, "", ":/pictures/backstage_icon/lookup_history.png");
+                                                lookup_history_button_, ":/pictures/backstage_icon/lookup_history.png");
 
     system_settings_main_layout_ = new QVBoxLayout(this);
 

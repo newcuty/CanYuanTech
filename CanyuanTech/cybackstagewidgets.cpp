@@ -25,8 +25,8 @@ QHBoxLayout *cyBackStageWidgets::initTopLayout(const QString &icon_path, const Q
 }
 
 QHBoxLayout *cyBackStageWidgets::initTopLayout(const QString &icon_path, const QString &title,
-                                               QPushButton *button, const QString &button_name,
-                                               const QString& button_icon)
+                                               QPushButton *button,const QString& button_icon)
+
 {
     //顶部布局
     QHBoxLayout* return_layout = new QHBoxLayout();
@@ -37,11 +37,12 @@ QHBoxLayout *cyBackStageWidgets::initTopLayout(const QString &icon_path, const Q
     text_label->setStyleSheet("font-size:16px;color:#2A84FF;");
     text_label->setText(title);
 
-    button = new QPushButton();
+    //button = new QPushButton();
     QString styleSheet("border-image:url(");
     styleSheet += button_icon;
     styleSheet += (");");
 
+    qDebug() << styleSheet;
     button->setStyleSheet(styleSheet);
 
     return_layout->addWidget(icon_label);
