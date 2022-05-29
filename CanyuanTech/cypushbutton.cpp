@@ -16,6 +16,7 @@ void cyPushButton::init(const QString &icon_path, const QString &info)
     icon_button_->setPixmap(pixmap);
 
     info_lable_->setText(info);
+    info_lable_->setStyleSheet("font-size:20px;color:#FFFFFF;");
 
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     mainLayout->addWidget(icon_button_);

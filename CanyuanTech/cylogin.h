@@ -32,15 +32,23 @@ private:
     QVBoxLayout* vertical_layout_;  //登录界面主布局
     QHBoxLayout* horzion_button_layout_;    //布局按钮
 
+    //用户账户密码
+    QString account_;       //账户
+    QString password_;       //密码
+
 private:
-    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *event);    
 
 public slots:
     void slotCancleLogin(); //取消登录槽函数
     void slotSystemReboot();    //重启系统槽函数
-    void clearEditor();     //输入框点击之后，清空数据
+    void slotclearEditor();     //输入框点击之后，清空数据
+    void slotGetAccountStr(const QString& account_str);   //获取编辑框的输入的账户信息
+    void slotGetPasswordStr(const QString& password_str);   //获取密码框信息
+    void slotLogin();
 
 signals:
+    void sigVerifySuccess();    //账号密码验证成功信号
 
 
 

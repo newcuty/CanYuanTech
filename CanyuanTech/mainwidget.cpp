@@ -182,8 +182,8 @@ void mainWidget::initLoginArea()
     //添加控件到堆栈窗口
     right_stacked_widget_->addWidget(login_widget_);
 
-    //登录跳转控件事件
-    connect(login_widget_->getButton(), &QPushButton::clicked, this, &mainWidget::onChangeToTowerWidget);
+    //cyLogin 验证成功之后，发送 sigVerifySuccess 信号
+    connect(login_widget_, &cyLogin::sigVerifySuccess, this, &mainWidget::onChangeToTowerWidget);
 
 }
 
