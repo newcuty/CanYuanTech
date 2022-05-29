@@ -149,7 +149,7 @@ void mainWidget::initTopStatusArea()
     horizon_top_status_layout_->addSpacing(top_element_spcing);
     //添加后台按钮组件
     horizon_top_status_layout_->addWidget(voice_backagestage_btn_);
-    connect(voice_backagestage_btn_->getBackageBtn(), &QPushButton::clicked, this, &mainWidget::onChangeToBackStageWidget);
+    //connect(voice_backagestage_btn_->getBackageBtn(), &QPushButton::clicked, this, &mainWidget::onChangeToBackStageWidget);
 
     /******顶部布局添加控件结束*********/
 

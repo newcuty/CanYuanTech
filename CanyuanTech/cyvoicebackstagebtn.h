@@ -22,8 +22,15 @@ private:
     QPushButton* voice_btn_;    //声音按钮
     QPushButton* backstage_btn_;    //后台按钮
 
+    enum VOICELEVEL{VOLICE_SLIENCE = 0, VOICE_MAX = 255, VOICE_LEVEL_1 = 1};    //声音预留
 
+    VOICELEVEL voice_level_;   //声音等级
 signals:
+    void sigVoiceLevel(VOICELEVEL& level);   //发送声音等级信号改变
+
+public slots:
+    void slotVoiceChange(VOICELEVEL& level);       //处理声音改变
+
 
 };
 

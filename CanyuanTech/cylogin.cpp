@@ -30,6 +30,7 @@ void cyLogin::init()
 
     //连接获取账号信号槽
     connect(account_line_edit_, &QLineEdit::textChanged, this, &cyLogin::slotGetAccountStr);
+    //connect(account_line_edit_, &QLineEdit::, this, &cyLogin::slotGetAccountStr);
 
     //密码编辑框
     password_line_edit_ = new QLineEdit();
@@ -120,7 +121,8 @@ void cyLogin::slotSystemReboot()
 
 void cyLogin::slotclearEditor()
 {
-
+    account_line_edit_->clear();
+    password_line_edit_->clear();
 }
 
 void cyLogin::slotGetAccountStr(const QString &account_str)
