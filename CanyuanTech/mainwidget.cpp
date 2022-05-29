@@ -206,13 +206,13 @@ void mainWidget::initBottomDetailInfoArea()
     momentWidget->init(":/pictures/main_page_pics/moment_pic.png", "力矩");
     //高度显示卡
     cyBottomWidgetElement* heightWidget = new cyBottomWidgetElement(this);
-    heightWidget->init(":/pictures/main_page_pics/heigth_pic.png", "高度");
+    heightWidget->init(":/pictures/main_page_pics/heigth_pic.png", "高度", "起升高度", "下落高度");
     //回转显示卡
     cyBottomWidgetElement* rotateWidget = new cyBottomWidgetElement(this);
     rotateWidget->init(":/pictures/main_page_pics/rotate_pic.png", "回转");
     //倾角显示卡
     cyBottomWidgetElement* dipAngleWidget = new cyBottomWidgetElement(this);
-    dipAngleWidget->init(":/pictures/main_page_pics/dip_angle_pic.png", "倾角");
+    dipAngleWidget->init(":/pictures/main_page_pics/dip_angle_pic.png", "倾角", "X轴", "Y轴");
     //风速显示卡
     cyBottomWidgetElement* windWidget = new cyBottomWidgetElement(this);
     windWidget->init(":/pictures/main_page_pics/wind_speed_pic.png", "风速");

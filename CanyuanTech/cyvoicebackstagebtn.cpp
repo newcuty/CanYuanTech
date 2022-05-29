@@ -26,10 +26,9 @@ cyVoiceBackstageBtn::~cyVoiceBackstageBtn()
 
 void cyVoiceBackstageBtn::init()
 {
-    if (!voice_btn_)
-    {
-        voice_btn_ = new QPushButton(this);
-    }
+
+    voice_btn_ = new QPushButton(this);
+
     //设置声音按钮背景图片
     QPixmap pixmapVoice(":/pictures/main_page_pics/voice_button_pic.png");
     voice_btn_->setStyleSheet("QPushButton{border-image:url(:/pictures/main_page_pics/voice_button_pic.png);"
@@ -41,14 +40,9 @@ void cyVoiceBackstageBtn::init()
     voice_btn_->setFixedSize(188, 66);
     voice_btn_->setText("声音");
 
-
-    if(!backstage_btn_)
-    {
-        backstage_btn_ = new QPushButton(this);
-    }
+    backstage_btn_ = new QPushButton(this);
 
     //设置后台按钮背景图片
-    //QPixmap pixmapBackStage(":/pictures/main_page_pics/back_stage_pic.png");
     backstage_btn_->setStyleSheet("QPushButton{ border-image:url(:/pictures/main_page_pics/back_stage_pic.png);"
                                   "text-align: right;"
                                   "padding-right:20px;"
