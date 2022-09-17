@@ -41,8 +41,8 @@ void cyBottomWidgetElement::init(const QString &icon_path, const QString &info)
     mainVLayout->addWidget(data_row_3_);
     mainVLayout->addStretch();
 
-    setSecondRowData("12.5KG");
-    setThirdRowData("(20.5%)");
+    setSecondRowData(12.5123);
+    setThirdRowData(20.51645);
 }
 
 void cyBottomWidgetElement::init(const QString &icon_path, const QString &info,
@@ -105,21 +105,21 @@ void cyBottomWidgetElement::init(const QString &icon_path, const QString &info,
     mainVLayout->addLayout(data_main_hlayout);
     mainVLayout->addStretch();
 
-    setSecondRowDatas("12.5m", "231");
-    setThirdRowDatas("(20.5%)", "(20.5%)");
+    setSecondRowDatas(12.532, 231.111);
+    setThirdRowDatas(20.5222, 20.5);
 
 }
 
 //第二行数据
-void cyBottomWidgetElement::setSecondRowData(const QString &data)
+void cyBottomWidgetElement::setSecondRowData(const float &data)
 {
     //设置数据
-    second_row_data_1_ = data;
+    second_row_data_1_ = QString::asprintf("%.1f", data);
     data_row_2_->setText(second_row_data_1_);
 }
 
 //第二行两个数据
-void cyBottomWidgetElement::setSecondRowDatas(const QString &data1, const QString &data2)
+void cyBottomWidgetElement::setSecondRowDatas(const float &data1, const float &data2)
 {
     if (!second_row_name_2_1_)
     {
@@ -127,29 +127,63 @@ void cyBottomWidgetElement::setSecondRowDatas(const QString &data1, const QStrin
         return;
     }
 
-    second_row_data_1_ = data1;
-    second_row_data_2_ = data2;
+    second_row_data_1_ = QString::asprintf("%.1f", data1);
+    second_row_data_2_ = QString::asprintf("%.1f", data2);
 
     data_row_label_2_1_->setText(second_row_data_1_);
     data_row_label_2_2_->setText(second_row_data_2_);
 }
 
 //第三行单数据
-void cyBottomWidgetElement::setThirdRowData(const QString &data)
+void cyBottomWidgetElement::setThirdRowData(const float& data_percentage)
 {
-    third_row_data_1_ = data;
+    third_row_data_1_ = QString::asprintf("%.1f", data_percentage) + "%";
+    third_row_data_1_ = setDataAlarmConlor(third_row_data_1_, -1);
     data_row_3_->setText(third_row_data_1_);
 }
 
 //设置第三行双数据
-void cyBottomWidgetElement::setThirdRowDatas(const QString &data1, const QString &data2)
+void cyBottomWidgetElement::setThirdRowDatas(const float& data_percentage1, const float& data_percentage2)
 {
 
-    third_row_data_1_ = data1;
+    //显示第三行左边的数据
+    third_row_data_1_ = QString::asprintf("%.1f", data_percentage1) + "%";
+    third_row_data_1_ = setDataAlarmConlor(third_row_data_1_, -2);
     data_row_label_3_1_->setText(third_row_data_1_);
 
-    third_row_data_2_ = data2;
+    //显示第三行右边的数据
+    third_row_data_2_ = QString::asprintf("%.1f", data_percentage2) + "%";
+    third_row_data_1_ = setDataAlarmConlor(third_row_data_2_, -2);
     data_row_label_3_2_->setText(third_row_data_2_);
+}
+
+QString cyBottomWidgetElement::setDataAlarmConlor(QString &str, int level)
+{
+
+    //防止数值太大的情况
+    if (level > 10)
+    {
+        return str;
+    }
+
+    QString colored_str;
+
+    //根据不同的等级来区分显示，正常时蓝色， 预警时黄色，报警是红色
+    switch(level)
+    {
+    case 0: //正常
+        colored_str = QString("<font color=blue>%1").arg(str);
+        break;
+    case -1:  //黄色
+        colored_str = QString("<font color=yellow>%1").arg(str);
+        break;
+    case -2:  //预警
+        colored_str = QString("<font color=red>%1").arg(str);
+        break;
+     default:   //默认蓝色
+        colored_str = QString("<font color=blue>%1").arg(str);
+    }
+    return colored_str;
 }
 
 

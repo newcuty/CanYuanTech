@@ -16,10 +16,18 @@ public:
               const QString& second_row_info1, const QString& second_row_info2);
 
     //设置第二行数据
-    void setSecondRowData(const QString& data);
-    void setSecondRowDatas(const QString& data1, const QString& data2);
-    void setThirdRowData(const QString& data);
-    void setThirdRowDatas(const QString& data1, const QString& data2);
+//    void setSecondRowData(const QString& data);
+//    void setSecondRowDatas(const QString& data1, const QString& data2);
+
+    void setSecondRowData(const float& data);
+    void setSecondRowDatas(const float& data1, const float& data2);
+
+    //设置第三行数据  arg:从底层采集到的数据，经过转换之后，只保留一位小数
+    void setThirdRowData(const float& data_percentage);
+    void setThirdRowDatas(const float& data_percentage1, const float& data_percentage2);
+
+    //设置字体颜色，用于报警 level 使用ALARMLAVEL
+    QString setDataAlarmConlor(QString& str, int level);
 
 private:
     QLabel* icon_label_;    //显示图标
@@ -56,6 +64,9 @@ private:
 signals:
     //发送报警信息 alarm_name： 报警部分，level报警级别
     void sigAlarm(const QString& alarm_name, const ALARMLAVEL& level);
+public slots:
+    //获取数据接口,后续传输需要
+    void getStaus(float&){};
 };
 
 #endif // CYBOTTOMWIDGETELEMENT_H
