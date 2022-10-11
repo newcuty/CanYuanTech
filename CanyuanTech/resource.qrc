@@ -45,5 +45,7 @@
         <file>pictures/backstage_icon/tower_load_pic.png</file>
         <file>pictures/backstage_icon/warning_pic.png</file>
         <file>pictures/backstage_icon/lookup_history.png</file>
+        <file>pictures/main_page_pics/voice_button_max.png</file>
+        <file>pictures/main_page_pics/voice_button_silence.png</file>
     </qresource>
 </RCC>
